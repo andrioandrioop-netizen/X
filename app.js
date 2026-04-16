@@ -1,7 +1,15 @@
 async function uploadFile() {
   const file = document.getElementById("fileInput").files[0];
   const status = document.getElementById("status");
+document.getElementById("downloadBtn").onclick = async () => {
+  const response = await fetch(url);
+  const blob = await response.blob();
 
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = "file";
+  a.click();
+};
   if (!file) {
     alert("Select file");
     return;
