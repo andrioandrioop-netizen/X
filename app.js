@@ -14,7 +14,7 @@ async function uploadFile() {
   formData.append("upload_preset", "YOUR_UPLOAD_PRESET");
 
   const res = await fetch(
-    "https://api.cloudinary.com/v1_1/YOUR_CLOUD_NAME/auto/upload",
+    "https://api.cloudinary.com/v1_1/dnhcdq9ne/auto/upload",
     {
       method: "POST",
       body: formData
