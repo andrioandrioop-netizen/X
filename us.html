@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+    content="width=device-width, initial-scale=1.0">
+    <title>About Us - Neards.Hub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-color: #1a0b4d;
+            --secondary-color: #5d3ebd;
+            --text-dark: #2d2d32;
+            --text-muted: #666670;
+            --bg-light: #f9f9fb;
+            --card-bg: #ffffff;
+            --border-color: #eaeaea;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI' , 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto !important;
+            padding: 0 30px;
+        }
+
+        header {
+            background: #fff;
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            width: 100%;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: #f0a500;
+        }
+
+        .search-bar {
+            width: 320px;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 10px 16px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            background-color: #f5f5f7;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--secondary-color);
+        }
+
+        .dark-mode-btn {
+            background-color: #0c0827;
+            color: #fff;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        .breadcrumb {
+            margin: 30px 0 20px 0;
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        h2.section-title {
+            font-size: 28px;
+            color: var(--primary-color);
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .about-hero {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 60px;
+            align-items: center;
+            margin-top: 15px;
+            margin-bottom: 50px;
+        }
+
+        .about-hero h1 {
+            font-size: 38px;
+            color: var(--primary-color);
+            margin-bottom: 8px;
+        }
+
+        .underline {
+            width: 45px;
+            height: 4px;
+            background-color: var(--secondary-color);
+            margin-bottom: 25px;
+            border-radius: 2px;
+        }
+
+        .about-text p {
+            color: var(--text-muted);
+            margin-bottom: 22px;
+            font-size: 15px;
+        }
+
+        .illustration-container {
+            position: relative;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 320px;
+        }
+
+        .mock-editor {
+            border-radius: 12px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+            position: relative;
+            width: 290px;
+            height: 200px;
+            background-color: #120e2e;
+        }
+
+        .editor-dots {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 18px;
+        }
+
+        .dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 15px;
+        }
+
+        .dot.r { background: #ff5f56; }
+        .dot.y { background: #ffbd2e; }
+        .dot.g { background: #27c93f; }
+
+        .editor-lines {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .line {
+            height: 6px;
+            background: #2c2559;
+            border-radius: 3px;
+        }
+
+        .line.short { width: 40%; }
+        .line.med { width: 70%; }
+        .line.long { width: 90%; }
+        .line.indent { margin-left: 15px; }
+        .line.purple { background: #7b59ff; }
+        .line.orange { background: #ff9f43; }
+
+        .floating-tag {
+            position: absolute;
+            padding: 6px 14px;
+            border-radius: 6px;
+            color: white;
+            font-size: 12px;
+            font-weight: 600;
+            white-space: nowrap;
+            z-index: 10;
+        }
+
+        .floating-tag {
+            position: absolute;
+            padding: 6px 12px;
+            border-radius: 6px;
+            color: white;
+            font-size: 11px;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+
+        .tag-code { background-color: #722ed1; top: 20px; right: 40px; }
+        .tag-archive { background-color: #9254de; top: 60px; left: 10px; }
+        .tag-semesters { background-color: #2f54eb; bottom: 60px; left: -10px; }
+        .tag-codes { background-color: #fa8c16; bottom: 100px; right: 10px; }
+        .tag-growing { background-color: #389e0d; bottom: 30px; right: 50px; }
+        
+        .mission-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .big-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 30px;
+            display: flex;
+            gap: 20px;
+        }
+
+        .big-card .icon-box {
+            width: 50px;
+            height: 50px;
+            background: #f0ecfd;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .big-card .icon-box i {
+            color: var(--secondary-color);
+            font-size: 22px;
+        }
+
+        .big-card .icon-box h3 {
+            color: var(--primary-color);
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-bottom: 60px;
+        }
+
+        .small-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-bg);
+            border-radius: 12px;
+            padding: 20px;
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .small-card .icon-side {
+            font-size: 20px;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+
+        .small-card-content h4 {
+            font-size: 15px;
+            color: #111;
+            margin-bottom: 6px;
+         }
+        
+        
+        .small-card p {
+            font-size: 12px;
+            color: var(--text-muted);
+            line-height: 1.4;
+        }
+
+        .creators-grid {
+            display: flex;
+            justify-content: flex-start;
+            gap: 25px;
+            margin-bottom: 70px;
+        }
+
+        .creator-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 25px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            width: calc(50% - 13px);
+            max-width: 450px;
+        }
+
+        .avatar-circle {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            background-color: #722ed1;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+
+        .creator-info h4 {
+            font-size: 16px;
+            color: var(--primary-color);
+        }
+
+        .creator-info .role {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+        }
+
+        .creator-info .desc {
+            font-size: 12px;
+            color: var(--text-muted);
+            line-height: 1.4;
+        }
+
+        footer {
+            background-color: #0b0726;
+            color: #a3a1b6;
+            text-align: center;
+            padding: 30px 0;
+            font-size: 13px;
+        }
+
+        footer p {
+            margin-bottom: 55px;
+        }
+
+        @media (max-width: 992px) {
+            .about-hero { grid-template-columns: 1fr; gap: 20px; text-align: center;}
+            .underline { margin: 0 auto 25px auto;}
+            .illustration-container { order: -1;}
+            .why-grid { grid-template-columns: repeat(2, 1fr);}
+            .mission-row { grid-template-columns: 1fr; }
+            .creators-grid { flex-direction: column; align-items: center; }
+         }
+
+         @media (max-width: 576px) {
+            .why-grid { grid-template-columns: 1fr; }
+            .navbar { flex-wrap: wrap; height: auto; padding: 15px 0; gap: 15px; }
+            .search-bar { order: 3; flex: 1 0 100%; margin: 0; }
+            .creator-card { width: 100%; margin: 0; }
+        }
+
+ </style>
+</head>
+
+<body>
+    <!--Header Navigation-->
+    <header>
+        <div class="container navbar">
+            <a href="#" class="logo">Nerds.<span>Hub</span></a>
+            <div class="search-bar">
+                <input type="text" placeholder="Search codes..">
+            </div>
+        </div>
+            <div class="nav-right">
+             <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="cpp.html">Codes</a></li>
+                <li><a href="ticacoe.html">Tic tac toe</a></li>
+                <li><a href="us.html" class="active">About Us</a></li>
+                
+                </ul>
+                <button class="dark-mode-btn">Dark Mode</button>
+        </div>
+        </div>
+    </header>
+
+    <div class="container">
+    <!--Breadcrumb naviagtion--> 
+    <div class="breadcrumb">
+        Home > About Us
+    </div>
+
+    <!--Main Hero Section-->
+    <section class="about-hero">
+        <div class="about-text">
+            <h1>About Us</h1>
+            <div class="underline"></div>
+            <p>Neards.Hub is a passion project born out of our journey
+                in B.Sc.IT. Our mission is to archive the programs and 
+                projects we build across semesters, creating a centralized,
+                accessible space for quick revision. By storing our source 
+                code directly on the platform, we've made our learning
+                history easily accessible to anyone with the link.</p> 
+
+                <p>We are continuously building and have exciting features 
+                planned for the near future. Thank you for visiting our 
+                archive, and we appreciate your patience as we grow!
+            </p>
+        </div>
+
+        <!--CSS Illustration replicating the UI graphic layout-->
+        <div class="illustration-container">
+            <div class="floating-tag tag-code">&lt;/&gt;</div>
+            <div class="floating-tag tag-archive">Archive</div>
+            <div class="floating-tag tag-semesters">Semesters</div>
+            <div class="mock-editor">
+                <div class="editor-dots">
+                    <div class="dot r"></div>
+                    <div class="dot y"></div>
+                    <div class="dot g"></div>
+                </div>
+
+                <div class="editor-lines">
+                    <div class="line short orange"></div>
+                    <div class="line med indent purple"></div>
+                    <div class="line long indent"></div>
+                    <div class="line med indent"></div>
+                    <div class="line short indent purple"></div>
+                    <div class="line long"></div>
+                    <div class="line med orange"></div>
+                </div>
+            </div>
+            <div class="floating-tag tag-codes">Codes</div>
+            <div class="floating-tag tag-growing">Growing</div>
+        </div>
+    </section>
+
+    <!--Mission & Drive Section-->
+    <section class="mission-row">
+        <div class="big-card">
+            <div class="icon-box">
+                <i class="fa-solid fa-crosshairs"></i>
+            </div>
+            
+            <div class="big-card-content">
+                <h3>Our Mission</h3>
+                <p>To maintain a growing archive of our academic codes and
+                    projects and use them as a way to track our progress,
+                    challenge our skills, and showcase what we can do.</p>
+            </div>
+        </div>
+
+        <div class="big-card">
+            <div class="icon-box">
+                <i class="fa-solid fa-arrow-up-right-dots"></i>
+            </div>
+            <div class="big-card-content">
+            <h3>What Drives Us</h3>
+            <p>We build, we learn, we improve. This platform is our space
+                to explore ideas, solve problems, and see how far we can go.</p>
+        </div>
+        </div>
+    </section>
+
+    <!--Why This Site Exists Section-->
+    <section>
+        <h2 class="section-title">Why This Site Exists</h2>
+        <div class="why-grid">
+            <div class="small-card">
+                <div class="icon-side blue">
+                    <i class="fa-solid fa-folder"></i>
+                </div>
+                <div class="small-card-content">
+            <h4>Archive</h4>
+            <p>Store and organize all the code we create each semester.</p>
+            </div>
+            </div>
+            <div class="small-card">
+                <div class="icon-side green"><i 
+                class="fa-solid fa-seedling"></i></div>
+                <div>
+                    <h4>Growing</h4>
+                    <p>The archive keeps growing as we learn and build more.</p>
+                </div>
+                </div>
+                <div class="small-card">
+                <div class="icon-side orange">
+                    <i class="fa-solid fa-user-group"></i>
+                </div>
+
+                <div>
+                    <h4>Made by Two</h4>
+                    <p>Built by two creators passionate about coding and learning.</p>
+                </div>
+            </div>
+            
+            <div class="small-card">
+                <div class="icon-side purple">
+                    <i class="fa-solid fa-bolt"></i>
+                </div>
+            </div>
+        
+                <div>
+                    <h4>Goal</h4>
+                    <p>A simple way to challenge ourselves and showcase
+                        our abilities.</p>
+                </div>
+            </div>
+        </div>    
+    </section>
+
+    <!--The Creators Section-->
+    <section class="creators-section">
+        <h2 class="section-title">The Creators</h2>
+        <div class="creators-grid">
+            <div class="creator-card">
+                <div class="avatar-circle" 
+                style="background-color: #5d3ebd;">A</div>
+                <div class="creator-info">
+                    <h4>Jaskaran Singh</h4>
+                    <div class="role">Advanced page layouts & creative design</div>
+
+                    <div class="desc">Loves building clean UIs and solving problems
+                        and also get in problems everytime..
+                    </div>
+                </div>
+            </div>
+                <div class="creator-card">
+                    <div class="avatar-circle"
+                    style="background-color: #4d3ca6;">P</div>
+                    <div class="creator-info">
+                        <h4>Priyanshi Panwar</h4>
+                        <div class="role">Assistance & Page design</div>
+
+                        <div class="desc">Focuses on clean code, structure,
+                             and logic. Also give solutions to this cool guy..</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!--footer-->
+<footer>
+    <p>&copy; 2026 Neards Hub. All rights reserved.</p>
+    </footer>
+</body>
+</html>

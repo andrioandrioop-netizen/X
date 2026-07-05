@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+        content="width=device-width,initial-scale=1.0">
+        <title>NerdHub - Let's Build</title>
+
+    <style>
+        * {
+            margin:0;
+            padding:0;
+            box-sizing: border-box;
+            font-family:'Segoe-box',Tahoma,Geneva,Verdana,sans-serif;
+        }
+        body{
+            background-color:#f4f6f9;
+            color:#333;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            min-height:100vh;
+            padding:20px;
+        }
+        .page-container {
+            background:#fff;
+            width:95%;
+            max-width:1200px;
+            border-radius:12px;
+            box-shadow:0 10px 30px rgba(0,0,0,0.08);
+            padding:30px;
+            display:flex;
+            flex-direction:column;
+            gap:30px;
+        }
+        header {
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            border-bottom:2px solid #f0f2f5;
+            padding-bottom:15px;
+        }
+        .logo {
+            font-size:28px;
+            font-weight:800;
+            color:#2c3e50;
+        }
+        nav a {
+            text-decoration:none;
+            color:#555;
+            margin-left: 20px;
+            font-weight:500;
+            transition:color 0.2s;
+        }
+        nav a:hover {
+            color:#000;
+        }
+        .hero-title {
+            text-align: center;
+            font-size:36px;
+            font-weight:800;
+            color:#233142;
+            letter-spacing:1px;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            gap:10px;
+        }
+        .hero-text {
+            text-align:center;
+            color:#666;
+            margin-bottom:30px;
+            font-size:18px;
+        }
+        .grid-container {
+            display:grid;
+            grid-template-columns:repeat(3, 1fr);
+            gap:20px;
+        }
+        .card-link {
+            text-decoration:none;
+            color:inherit;
+        }
+        .card{
+            background:#ffffff;
+            border:2px solid #cfd8dc;
+            border-radius:16px;
+            overflow:hidden;
+            text-align:center;
+            transition: transform 0.2s ease,box-shadow 0.2s ease,
+            border-color 0.2s ease;
+            height: 100%;
+            display:flex;
+            flex-direction:column;
+            transition:0.3s ease;
+        }
+        .card:hover {
+            transform:translateY(-5px);
+            box-shadow:0 8px 20px rgba(0,0,0,0.15);
+            border-color:#90a4ae;
+        }
+        .card-header {
+            background-color:#e0e6ed;
+            padding:12px;
+            font-size:20px;
+            font-weight:600;
+            color:#34495e;
+            border-bottom:2px solid #cfd8dc;
+        }
+        .card-body {
+            padding:20px;
+            min-height:100px;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+        }
+        .card-icon {
+            width:60px;
+            height:60px;
+            object-fit:contain;
+        }
+        .mock-lines {
+            width: 100%;
+            display:flex;
+            flex-direction:column;
+            gap:6px;
+            align-items:center;
+            margin-top:5px;
+        }
+        .line {
+            height:3px;
+            background-color:#e0e0e0;
+            border-radius:5px;
+        }
+        .line.long{width:80%;}
+        .line.med{width:65%}
+        .line.short{width:50%}
+
+        .contact-box {
+            background-color:#f0f4f8;
+            border-radius:12px;
+            padding:20px;
+            text-align:center;
+            display:flex;
+            flex-direction:column;
+            gap:10px;
+            align-items:center;
+            justify-content:center;
+            margin-top:30px;
+            width:100%;
+        }
+        .contact-item{
+            display:flex;
+            align-items:center;
+            gap:10px;
+            font-size:18px;
+            color:#333;
+            font-weight:500;
+        }
+        .contact-icon {
+            width:22px;
+            height:22px;
+            object-fit:contain;
+        }
+         .footer {
+            width:100%;
+            background-color:#1f2937;
+            color:white;
+            text-align:center;
+            padding:15px 0;
+            margin-top:40px;
+        }
+        .footer-content p {
+            margin:5px 0;
+            font-size:14px;
+        }
+        @media (max-width:768px) {
+        header {
+            flex-direction:column;
+            gap:15px;
+        }
+        nav a{
+            margin:0 10px;
+        }
+        .hero-title {
+            font-size:28px;
+        }
+        .about {
+            text-align:center;
+            padding:40px 20px;
+        }
+    }
+</style>
+    </head>
+    <body>
+        <div class="page-container">
+            <header>
+                <div class="logo">NerdHub</div>
+                <nav>
+                    <a href="index.html">home</a>
+                    <a href="ticacoe.html">TicTacToe</a>
+                    <a href="us.html">About us</a>
+                    <a href="#">contact</a>
+                </nav>
+            </header>
+
+            <h1 class="hero-title">
+                LET'S BUILD...
+            </h1>
+            <p class="hero-text">
+                Learn programming ,practice projects,and improve your coding skills.
+            </p>
+
+            <main class="grid-container">
+                <a href="c sharp.html"
+            class="card-link">
+                 <div class="card">
+                    <div class="card-header">C#</div>
+                <div class="card-body">
+                    <img src="IMG_20260608_103043.png" alt="c#" class="card-icon">
+                    <div class="mock-lines">
+                        <div class="line long"></div>
+                        <div class="line med"></div>
+                        <div class="line short"></div>
+                        <div class="line med"></div>
+                    </div>
+                </div> 
+            </div>
+        </a>      
+        
+        <a href="cpp.html" class="card-link">
+            <div class="card">
+                <div class="card-header">C++</div>
+                <div class="card-body">
+                    <img src="IMG_20260608_103058.png" alt="C++" class="card-icon">
+                    <div class="mock-lines">
+                        <div class="line long"></div>
+                        <div class="line med"></div>
+                        <div class="line short"></div>
+                        <div class="line med"></div>                    
+                    </div>
+                </div>
+                </div>
+        </a>
+
+        <a href="py.html"
+        class="card-link">
+        <div class="card">
+            <div
+            class="card-header">Python</div>
+            <div class="card-body">
+                <img src="IMG_20260608_103140.png" alt="Python" class="card-icon">
+                <div class="mock-lines">
+                <div class="line long"></div>
+                <div class="line med"></div>
+                <div class="line short"></div>
+                <div class="line med"></div>
+            </div>
+        </div>    
+       </div>
+    </a>
+
+    <a href="jav.html" class="card-link">
+        <div class="card">
+            <div class="card-header">Java</div>
+            <div class="card-body">
+                <img src="IMG_20260608_103030.png" alt="Java" class="card-icon">
+                <div class="mock-lines">
+                    <div class="line long"></div>
+                    <div class="line med"></div>
+                    <div class="line short"></div>
+                    <div class="line med"></div>
+                </div>
+            </div>
+        </div>
+    </a>
+
+    <a href="sql.html" class="card-link">
+        <div class="card">
+            <div class="card-header">SQL</div>
+            <div class="card-body">
+                <img src="IMG_20260608_103310.png" alt="SQL" class="card-icon">
+                <div class="mock-lines">
+                <div class="line long"></div>
+                <div class="line med"></div>
+                <div class="line short"></div>
+                <div class="line med"></div>
+                  </div>
+            </div>
+        </div>
+    </a>
+
+    <a href="ht.html" class="card-link">
+        <div class="card">
+            <div class="card-header">HTML</div>
+            <div class="card-body">
+                <img src="1781599525154.jpg" alt="HTML" class="card-icon">
+                <div class="mock-lines">
+                    <div class="line long"></div>
+                    <div class="line med"></div>
+                    <div class="line short"></div>
+                    <div class="line med"></div>
+                </div>
+            </div>
+        </div>
+    </a>
+    </main>
+    <section class="about">
+        <h2> Why NerdHub??</h2>
+        <p>
+            Explore tutorials, coding challenges, and beignner-friendly projects 
+            in multiple programming languages.
+        </p>
+    </section>
+            
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2025 NerdHub. All Rights Reserved.</p>
+            <p>Build with for Developers</p>
+            xyz@gmail.com
+        </div>
+        <div class="contact-item">
+            Phone:8969696969
+        </div>
+        <div class="socials">
+            <a href="#">Github</a>
+            <a href="#">LinkedIn</a>
+            <a href="#">Teitter</a>
+        </div>
+        </footer>
+       
+        </div>
+    </body>
+</html>

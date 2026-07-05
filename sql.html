@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>NerdHub - SourceCodes</title>
+
+<style>
+    .title-row{
+        margin-bottom: 20px;
+    }
+
+    header{
+        height: 70px;
+        background: white;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 30px;
+        border-bottom: 1px solid #ddd;
+        position: sticky;
+        top:0;
+        z-index: 1000;
+    }
+
+    .theme{
+        background: linear-gradient(135deg,#111827,#374151);
+        color: white;
+        border: none;
+        padding: 12px 18px;
+        border-radius: 12px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .theme:hover{
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+    }
+
+    .back-btn{
+        background: linear-gradient(135deg,#2563eb,#1d4ed8);
+        color: white;
+        border: none;
+        padding: 12px 22px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .back-btn:hover{
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px rgba(37,99,235,0.35);
+    }
+
+    .copy-btn{
+        background: linear-gradient(135deg,#22c55e,#16a34a);
+        color: white;
+        border: none;
+        padding: 10px 18px;
+        border-radius: 10px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: 0.3s;
+        margin-top: 15px;
+        align-self: center;
+    }
+
+    .copy-btn:hover{
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(34,197,94,0.35);
+    }
+
+    .logo{
+        font-size: 32px;
+        font-weight: 700;
+        color: #111827;
+        margin-right: 40px;
+    }
+
+    .gold{
+        color: #d4a017;
+    }
+
+    .navbar{
+        display: flex;
+        gap: 25px;
+        align-items: center;
+    }
+
+    .nav-link{
+        text-decoration: none;
+        color: #374151;
+        font-weight: 600;
+        transition: 0.3s;
+    }
+
+    .nav-link:hover{
+        color: #2563eb;
+    }
+
+    .acive-nav{
+        color: #2563eb;
+    }
+
+    .search{
+        width: 180px;
+        padding: 10px 14px;
+        border: 1px solid #d1d5db;
+        border-radius: 10px;
+        outline: none;
+    }
+
+    .banner{
+        width:100%;
+        overflow:hidden;
+    }
+
+    .banner img{
+        width: 100%;
+        height:350px;
+        object-fit: cover;
+        display: block;
+    }
+
+    .header-right{
+        display: flex;
+        gap: 10px;
+        align-items: center;
+    }
+
+    .subject img{
+        width: 40px;
+        height: 40px;
+        object-fit: contain;
+        flex-shrink: 0;
+    }
+
+    .subject.active{
+        background:#eff6ff;
+        color: #2563eb;
+        border-left: 4px solid #60a5fa;
+        font-weight:600;
+    }
+   .container{
+    display:flex;
+    gap:20px;
+    padding:20px;
+    align-items:flex-start;
+}
+
+.subject{
+    text-decoration:none ;
+    color: inherit;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+.sidebar{
+    width:200px;
+    min-width:100px;
+
+    background:white;
+    padding:20px;
+    border-radius:15px;
+    border:1px solid #ddd;
+
+    position:sticky;
+    top:20px;
+
+    height:fit-content;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.sidebar::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:url('1782389383938.jpg');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.3;
+    z-index: -1;
+
+}
+
+.content{
+    flex:1;
+    min-width:0;
+    margin-top: 30px;
+}
+
+.code-panel{
+    width:100%;
+    background:#0f172a;
+    color:white;
+    border-radius:15px;
+    padding:20px;
+}
+
+.code-panel pre{
+  white-space: pre;
+  font-family: 'Courier New', Courier, monospace;
+  line-height: 1.6;
+  overflow-x: auto;
+  padding: 15px;
+  margin: 0;
+  background: transparent;
+  color: white;
+}
+
+</style>
+</head>
+<body>
+
+<header>
+
+   <div class="logo">Nerds.<span class="gold">Hub</span></div>
+   <div class="header-right">
+    <input class="search"
+    type="text"
+    placeholder="Search practicals...">
+
+    <nav class="navbar">
+    <a href="index.html" class="nav-link">Home</a>
+    <a href="ticacoe.html" class="nav-link">TicTacToe</a>
+    <a href="us.html" class="nav-link">About Us</a>
+   </nav>
+
+    <button class="theme code-btn" onclick="toggleTheme()">
+        Dark Mode
+    </button>
+   </div>
+
+</header>
+<div class="banner"><img src="1782392927641.jpg" alt="NerdHub Banner"></div>
+
+<div class="container">
+
+    <div class="sidebar">
+
+        <h2>Subjects</h2>
+
+        <a href="cpp.html" class="subject">
+            <img src="IMG_20260608_103058.png">
+            <span>C++</span>
+        </a>
+
+        <a href="py.html" class="subject">
+            <img src="IMG_20260608_103140.png">
+            <span>Python</span>
+        </a>
+
+        <a href="c sharp.html" class="subject">
+            <img src="IMG_20260608_103043.png">
+            <span>C#</span>
+        </a>
+
+        <a href="sql.html" class="subject active">
+            <img src="IMG_20260608_103310.png">
+            <span>SQL</span>
+        </a>
+
+        <a href="jav.html" class="subject">
+            <img src="IMG_20260608_103030.png">
+            <span>Java</span>
+        </a>
+
+        <a href="ht.html" class="subject">
+            <img src="1781599525154.jpg">
+            <span>HTML</span>
+        </a>
+
+
+        <div class="contact">
+            <p><strong>Email:</strong><br>xyz@gmail.com</p>
+            <p><strong>Phone:</strong><br>9789769696</p>
+        </div>
+
+    </div>
+
+    <div class="content">
+
+        <div class="breadcrumb">
+            Home > C++ > Practical 3
+        </div>
+
+        <div class="title-row">
+
+            <div>
+                <h1>Practical 3:Basic table creation codes</h1>
+
+                <p>
+                    Q1.Write a query to create table in SQL.
+                </p>
+            </div>
+        </div>
+
+        <div class="code-panel">
+
+            <div class="code-header">
+                   <h3>table.sql</h3>
+            </div>
+
+<pre id="codeBlock">
+    CREATE TABLE USERS(
+        ID INT,
+        Name VARCHAR(50),
+        Age INT,
+        Gender VARCHAR(10)
+    );
+</pre>
+
+                <button class="copy-btn code-btn"
+                onclick="copyCode()">
+                    Copy Code
+                </button>
+
+            
+
+        </div>
+
+    <div class="title-row">
+        <p>Q2.Write a query to insert values into the "users" table.</p>
+    </div>
+    
+    <div class="code-panel">
+        <div class="code-header"><h3>table.sql</h3></div>
+        <pre id="codeBlock2">
+            INSERT INTO USERS VALUES(
+                1,'Kamlesh bkl',16,Male
+            );
+        </pre>
+        <button class="copy-btn" onclick="copyCode2()">Copy Code</button>
+    </div>
+
+    </div>
+
+    </div>
+
+</div>
+
+<script>
+
+function copyCode(){
+
+    let text =
+    document.getElementById(
+    "codeBlock"
+    ).innerText;
+
+    navigator.clipboard.writeText(text);
+
+    alert("Code Copied");
+
+}
+
+function downloadCode(){
+
+    let code =
+    document.getElementById(
+    "codeBlock"
+    ).innerText;
+
+    let blob =
+    new Blob([code],
+    {type:"text/plain"});
+
+    let a =
+    document.createElement("a");
+
+    a.href =
+    URL.createObjectURL(blob);
+
+    a.download =
+    "arrays.cpp";
+
+    a.click();
+
+}
+
+function toggleTheme(){
+
+    document.body.classList.toggle(
+    "dark"
+    );
+
+}
+
+</script>
+
+</body>
+</html>

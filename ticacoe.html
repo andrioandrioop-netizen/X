@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cat Tic Tac Toe</title>
+
+    <link rel="icon" href="assets/logo.png">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<header>
+
+    <div class="logo">
+
+        <img src="IMG_20260705_162051.jpg" alt="Logo">
+
+        <h2>NerdHub</h2>
+
+    </div>
+
+    <nav>
+
+        <ul>
+
+            <li><a href="index.html">Home</a></li>
+
+            <li><a class="active" href="#">TicTacToe</a></li>
+
+            <li><a href="#">Status</a></li>
+
+            <li><a href="#">Contact</a></li>
+
+        </ul>
+
+    </nav>
+
+</header>
+
+<!-- ================= LEFT DECORATION ================= -->
+
+    
+    <main>
+
+    <!-- Title -->
+
+    <section class="title-section">
+
+        <h1>
+
+            🐾 CAT <span>TIC TAC TOE</span> 🐾
+
+        </h1>
+
+        <p>
+
+            Challenge your friends and improve your logic skills.
+
+        </p>
+
+    </section>
+
+    <!-- Players -->
+
+    <section class="players">
+
+        <div class="player-card">
+
+            <img src="IMG_20260705_153704.jpg">
+
+            <div>
+
+                <h2>Player 1</h2>
+
+                <p>White Cat</p>
+
+            </div>
+
+        </div>
+
+        <div class="vs">
+
+            VS
+
+        </div>
+
+        <div class="player-card">
+
+            <img src="IMG_20260705_153712.jpg">
+
+            <div>
+
+                <h2>Player 2</h2>
+
+                <p>Gray Cat</p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- Turn -->
+
+    <section class="turn-container">
+
+        <div class="turn-box">
+
+            🐾 Player 1's Turn (White Cat)
+
+        </div>
+
+    </section>
+
+    <!-- Game -->
+
+    <section class="game-area">
+
+        <div class="board">
+
+            <div class="cell" data-index="0"></div>
+
+            <div class="cell" data-index="1"></div>
+
+            <div class="cell" data-index="2"></div>
+
+            <div class="cell" data-index="3"></div>
+
+            <div class="cell" data-index="4"></div>
+
+            <div class="cell" data-index="5"></div>
+
+            <div class="cell" data-index="6"></div>
+
+            <div class="cell" data-index="7"></div>
+
+            <div class="cell" data-index="8"></div>
+
+        </div>
+
+    </section>
+
+    <!-- Controls -->
+
+    <section class="controls">
+
+        <button id="restart">
+
+            🐾 Restart Game
+
+        </button>
+
+    </section>
+
+    <!-- Score -->
+
+    <section class="scoreboard">
+
+        <div class="score">
+
+            <h3>Player 1</h3>
+
+            <span id="score1">0</span>
+
+        </div>
+
+        <div class="score">
+
+            <h3>Draws</h3>
+
+            <span id="draws">0</span>
+
+        </div>
+
+        <div class="score">
+
+            <h3>Player 2</h3>
+
+            <span id="score2">0</span>
+
+        </div>
+
+    </section>
+
+</main>
+
+<!-- ================= RIGHT DECORATION ================= -->
+
+
+<!-- ================= MAIN ================= -->
+
+
+<!-- Winner Popup -->
+
+<div class="popup" id="popup">
+
+    <div class="popup-content">
+
+        <h2 id="winnerText">
+
+            Player 1 Wins!
+
+        </h2>
+
+        <button id="playAgain">
+
+            Play Again
+
+        </button>
+
+    </div>
+
+</div>
+
+<!-- Footer -->
+<footer>
+
+    <p>
+
+        Made with ❤️ and 🐾 by NerdHub
+
+    </p>
+
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+   
+</div>
+</html>
