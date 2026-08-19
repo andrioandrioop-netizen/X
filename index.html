@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+<meta name="color-scheme" content="light dark">
+        <meta charset="UTF-8">
+        <meta name="viewport"
+        content="width=device-width,initial-scale=1.0">
+        <title>NerdHub - Let's Build</title>
+
+    <style>
+
+        :root {
+            --bg: #f4f7fb;
+            --surface: rgba(255,255,255,.94);
+            --surface-2: #eef3f8;
+            --text: #172033;
+            --muted: #667085;
+            --border: #dbe3ec;
+            --accent: #6366f1;
+            --shadow: 0 18px 50px rgba(15,23,42,.10);
+        }
+
+        body.dark {
+            --bg: #080d18;
+            --surface: rgba(17,24,39,.96);
+            --surface-2: #111827;
+            --text: #f3f4f6;
+            --muted: #aab4c5;
+            --border: #273449;
+            --accent: #818cf8;
+            --shadow: 0 20px 60px rgba(0,0,0,.35);
+
+            background:
+            radial-gradient(
+                circle at the top left,
+                rgba(99,102,241,.18),
+                transparent 35%
+            ),
+            var(--bg);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body{
+            min-height: 100vh;
+            padding: clamp(12pz, 3vw, 28px);
+
+            font-family:
+            Inter,
+            ui-sans-serif,
+            system-ui,
+             -apple-system, 
+            BlinkMacSystemFont, 
+            " Segoe UI",
+             sans-serif;
+
+             color: var(--text);
+
+             background:
+             radial-gradient(
+                circle at top left,
+                rgba(99,102,241,.12),
+                transparent 34%
+             ),
+             var(--bg);
+
+             transition: background .25s ease, color .25s ease;
+        }
+
+        .page-container {
+            background: var(--surface);
+            width: min(1180px, 100%);
+            border-radius:24px;
+            box-shadow: var(--border);
+            padding: clamp(18px, 4vw, 42px);
+            margin: 0 auto;
+            border: 1px solid var(--border);
+            backdrop-filter: blur(12px);
+        }
+
+        header {
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            gap: 18px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 20px;
+        }
+
+        .logo {
+            font-size: clamp(23px, 3vw, 30px);
+            font-weight: 900;
+            letter-spacing: -.04em;
+        }
+         
+        .logo::after {
+            content: ".";
+            color: var(--accent);
+        }
+        
+        nav{
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        nav a {
+            text-decoration:none;
+            color: var(--muted);
+            font-size: 14px;
+            font-weight: 650;
+            padding: 9px 11px;
+            border-radius: 10px;
+            transition: .2s ease;
+        }
+
+        nav a:hover ,
+        nav a:focus-visible {
+            color: var(--text);
+            background: var(-surface-2);
+            outline: none;
+        }
+        
+        .theme-toggle {
+            border: 1px solid var(--border);
+            background: var(--surface-2);
+            color: var(--text);
+            min-width: 42px;
+            min-height: 42px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 18px;    
+        }
+
+        .hero{
+            padding:
+            clamp(44px,9vw,88px)
+            0
+            clamp(34px,6vw,60px);
+            text-align: center;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            padding: 7px 12px;
+            margin-bottom: 16px;
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            color: var(--accent);
+            background: var(--surface);
+            font-size: 12px;
+            font-size: 800;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+        }
+
+        .hero-title {
+            max-width: 800px;
+            margin: 0 auto 16px;
+            font-size: clamp(38px, 8vw, 76px);
+            line-height: .98;
+            letter-spacing: -.06em;
+            font-weight: 950;
+        }
+
+        .hero-title span {
+            color: var(--accent);
+        }
+
+        .hero-text {
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0,1fr));
+            gap: 18px;
+        }
+
+        .card-link {
+            text-decoration:none;
+            color:inherit;
+            min-width: 0;
+        }
+
+        .card{
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            overflow: hidden;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            transition:
+            transform .22s ease,
+            box-shadow .22s ease,
+            boder-color .22s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 16px 35px rgba(15,23,42,.12);
+            border-color: var(--accent);
+        }
+
+        .card-header {
+            background: var(--surface-2);
+            padding: 15px 17px;
+            font-size: 17px;
+            font-weight: 800;
+            color: var(--text);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .card-body {
+            padding: 24px 18px;
+            min-height: 150px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .card-icon {
+            width: 64px;
+            height: 64px;
+            object-fit: contain;
+            border-radius: 12px;
+        }
+
+        .mock-lines {
+            width: 100%;
+            max-width: 190px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .line {
+            height: 4px;
+            background: var(--border);
+            border-radius: 999px;
+        }
+
+        .line.long{width:80%;}
+        .line.med{width:65%}
+        .line.short{width:50%}
+
+        .about {
+            margin-top: clamp(42px, 7vw, 72px);
+            padding: clamp(24px, 5vw, 42px);
+            text-align: center;
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            background: var(--surface);
+        }
+
+        .about h2{
+            margin-bottom: 10px;
+            font-size: clamp(24px, 4vw, 34px);
+            letter-spacing: -.03em;
+        }
+
+        .about p{
+            max-width: 650px;
+            margin: 0 auto;
+            color: var(--muted);
+            line-height: 1.7;
+        }
+
+        .footer {
+            margin-top: 26px;
+            padding: 24px 12px 8px;
+            color: var(--muted);
+            text-align: center;
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-content p {
+            margin: 5px 0;
+            font-size: 13px;
+        }
+
+        .contact-item {
+            margin-top: 12px;
+            font-size: 14px;
+        }
+
+        .socials {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-top: 12px;
+        }
+
+        .socials a {
+            color: var(--acccent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        @media (max-width: 850px) {
+            .grid-container {
+                grid-template-columns: repeat(2,minmax(0,1fr));
+            }
+        }
+
+        @media(max-width: 620px) {
+            body{
+                padding: 0;
+            }
+
+            .page-container {
+                width: 100%;
+                border: 0;
+                border-radius: 0;
+                padding: 16px;
+            }
+
+            header {
+                align-items: flex-start;
+                flex-wrap: wrap;
+            }
+
+            nav {
+                width: 100%;
+                justify-content: flex-start;
+                overflow-x: auto;
+                flex-wrap: nowrap;
+                scrollbar-width: none;
+            }
+
+            nav::-webkit-scrollbar {
+                display: none;
+            }
+
+            nav a{
+                flex: 0 0 auto;
+                min-height: 40px;
+                display: inline-flexxxx;
+                align-items: center;
+            }
+
+            .theme-toggle {
+                margin-left: auto;
+            }
+
+            .hero {
+                padding: 48px 4px 34px;
+            }
+
+            .grid-container {
+                grid-template-columns: 1fr;
+                gap: 14px;
+            }
+
+            .card-body {
+                min-height: 135px;
+            }
+
+            .footer {
+                padding-bottom: 12px;
+            }
+        }
+
+        @media(prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+                transition: none !important;
+            }
+        }
+
+
+/* Mobile optimisation — existing page structure preserved */
+@media (max-width: 768px){
+  html,body{max-width:100%;overflow-x:hidden;}
+  .page-container{width:100%;padding:0 14px;}
+  header{padding:12px 0;gap:10px;flex-wrap:wrap;}
+  .hero-title{font-size:clamp(30px,10vw,52px);line-height:1.05;}
+  .hero-text{font-size:15px;line-height:1.6;}
+  .grid-container{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;}
+  .card{min-width:0;}
+  .card-header{font-size:15px;padding:12px 10px;}
+  .card-body{padding:12px 10px;}
+  .card-icon{max-width:58px;height:auto;}
+  .theme-toggle{padding:9px 12px;font-size:13px;}
+}
+@media (max-width: 480px){
+  .page-container{padding:0 10px;}
+  .grid-container{grid-template-columns:1fr;gap:12px;}
+  .hero-title{font-size:34px;}
+  .hero-text{font-size:14px;}
+}
+
+</style>
+    <style>
+/* ===== CONSISTENT SITE-WIDE HEADER ===== */
+.site-header {
+    position: sticky !important;
+    top: 0;
+    z-index: 9999;
+    width: 100%;
+    min-height: 72px;
+    display: flex !important;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 12px 42px !important;
+    margin: 0 !important;
+    background: rgba(255,255,255,.96) !important;
+    border-bottom: 1px solid #e5e7eb !important;
+    box-shadow: 0 4px 18px rgba(15,23,42,.08) !important;
+    backdrop-filter: blur(10px);
+    box-sizing: border-box;
+}
+.site-logo {
+    flex: 0 0 auto;
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none !important;
+    font-family: 'Poppins', 'Segoe UI', sans-serif;
+    font-size: 28px !important;
+    line-height: 1;
+    font-weight: 800 !important;
+    color: #172033 !important;
+    white-space: nowrap;
+}
+.site-logo span { color: #6366f1 !important; }
+.site-header-right {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 20px;
+    min-width: 0;
+}
+.site-search {
+    width: 190px;
+    height: 40px;
+    padding: 0 14px;
+    border: 1px solid #dbe3ec;
+    border-radius: 10px;
+    outline: none;
+    background: #f8fafc;
+    color: #172033;
+    font: 500 14px 'Poppins', 'Segoe UI', sans-serif;
+    box-sizing: border-box;
+}
+.site-search:focus {
+    border-color: #6366f1;
+    box-shadow: 0 0 0 3px rgba(99,102,241,.12);
+}
+.site-nav {
+    display: flex !important;
+    align-items: center;
+    gap: 24px;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+.site-nav a {
+    display: inline-flex !important;
+    align-items: center;
+    padding: 8px 2px;
+    text-decoration: none !important;
+    color: #374151 !important;
+    font: 600 14px 'Poppins', 'Segoe UI', sans-serif !important;
+    white-space: nowrap;
+    transition: color .2s ease, transform .2s ease;
+}
+.site-nav a:hover,
+.site-nav a.active {
+    color: #6366f1 !important;
+    transform: translateY(-1px);
+}
+.site-theme-toggle {
+    height: 40px;
+    padding: 0 15px;
+    border: 1px solid #dbe3ec !important;
+    border-radius: 10px;
+    background: #172033 !important;
+    color: #fff !important;
+    cursor: pointer;
+    font: 600 13px 'Poppins', 'Segoe UI', sans-serif !important;
+    white-space: nowrap;
+    transition: transform .2s ease, box-shadow .2s ease;
+}
+.site-theme-toggle:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 14px rgba(15,23,42,.15);
+}
+@media (max-width: 1050px) {
+    .site-header { padding: 12px 22px !important; }
+    .site-search { width: 150px; }
+    .site-header-right { gap: 13px; }
+    .site-nav { gap: 15px; }
+}
+@media (max-width: 820px) {
+    .site-header { flex-wrap: wrap; justify-content: center; }
+    .site-header-right { width: 100%; justify-content: center; flex-wrap: wrap; }
+}
+@media (max-width: 560px) {
+    .site-search-wrap { display: none; }
+    .site-nav { gap: 12px; flex-wrap: wrap; justify-content: center; }
+    .site-nav a { font-size: 12px !important; }
+    .site-logo { font-size: 24px !important; }
+}
+</style>
+</head>
+    <body>
+        <div class="page-container">
+            <header class="site-header">
+    <a class="site-logo" href="index.html">Nerds.<span>Hub</span></a>
+
+    <div class="site-header-right">
+        <div class="site-search-wrap">
+            <input class="site-search" id="searchInput" type="text"
+                   placeholder="Search practicals..." aria-label="Search practicals">
+        </div>
+
+        <nav class="site-nav" aria-label="Primary navigation">
+            <a href="index.html">Home</a>
+            <a href="ticacoe.html">TicTacToe</a>
+            <a href="chess.html">Chess</a>
+            <a href="us.html">About Us</a>
+        </nav>
+
+        <button class="site-theme-toggle" id="themeToggle" type="button"
+                aria-label="Switch theme" title="Switch theme">
+            Dark Mode
+        </button>
+    </div>
+</header>
+
+            <h1 class="hero-title">
+                LET'S BUILD...
+            </h1>
+            <p class="hero-text">
+                Learn programming ,practice projects,and improve your coding skills.
+            </p>
+
+            <main class="grid-container">
+                <a href="c sharp.html"
+            class="card-link">
+                 <div class="card">
+                    <div class="card-header">C#</div>
+                <div class="card-body">
+                    <img src="IMG_20260608_103043.png"alt="c#" class="card-icon">
+                    <div class="mock-lines">
+                        <div class="line long"></div>
+                        <div class="line med"></div>
+                        <div class="line short"></div>
+                        <div class="line med"></div>
+                    </div>
+                </div> 
+            </div>
+        </a>      
+        
+        <a href="cpp.html" class="card-link">
+            <div class="card">
+                <div class="card-header">C++</div>
+                <div class="card-body">
+                    <img src="IMG_20260608_103058.png" alt="C++" class="card-icon">
+                    <div class="mock-lines">
+                        <div class="line long"></div>
+                        <div class="line med"></div>
+                        <div class="line short"></div>
+                        <div class="line med"></div>                    
+                    </div>
+                </div>
+                </div>
+        </a>
+
+        <a href="py.html"
+        class="card-link">
+        <div class="card">
+            <div
+            class="card-header">Python</div>
+            <div class="card-body">
+                <img src="IMG_20260608_103140.png" alt="Python" class="card-icon">
+                <div class="mock-lines">
+                <div class="line long"></div>
+                <div class="line med"></div>
+                <div class="line short"></div>
+                <div class="line med"></div>
+            </div>
+        </div>    
+       </div>
+    </a>
+
+    <a href="jav.html" class="card-link">
+        <div class="card">
+            <div class="card-header">Java</div>
+            <div class="card-body">
+                <img src="IMG_20260608_103030.png" alt="Java" class="card-icon">
+                <div class="mock-lines">
+                    <div class="line long"></div>
+                    <div class="line med"></div>
+                    <div class="line short"></div>
+                    <div class="line med"></div>
+                </div>
+            </div>
+        </div>
+    </a>
+
+    <a href="sql.html" class="card-link">
+        <div class="card">
+            <div class="card-header">SQL</div>
+            <div class="card-body">
+                <img src="IMG_20260608_103310.png" alt="SQL" class="card-icon">
+                <div class="mock-lines">
+                <div class="line long"></div>
+                <div class="line med"></div>
+                <div class="line short"></div>
+                <div class="line med"></div>
+                  </div>
+            </div>
+        </div>
+    </a>
+
+    <a href="ht.html" class="card-link">
+        <div class="card">
+            <div class="card-header">HTML</div>
+            <div class="card-body">
+                <img src="1781599525154.jpg" alt="HTML" class="card-icon">
+                <div class="mock-lines">
+                    <div class="line long"></div>
+                    <div class="line med"></div>
+                    <div class="line short"></div>
+                    <div class="line med"></div>
+                </div>
+            </div>
+        </div>
+    </a>
+    </main>
+    <section class="hero">
+        <div class="eyebrow">
+            Learn . Build . Improve
+        </div>
+        <h1 class="hero-title">
+            LET'S <span>BUILD</span>...
+        </h1>
+
+        <p class="hero-text">
+            Learn programming, pratice real projects,
+            and sharpen your coding skills with
+            beginner-friendly resources.
+        </p>
+    </section>
+            
+    <footer class="footer" id="contact">
+        <div class="footer-content">
+            <p>&copy; 2025 NerdHub. All Rights Reserved.</p>
+            <p>Build for Developers</p>
+            xyzzz@gmail.com
+        </div>
+        <div class="contact-item">
+            Phone:9528640989
+        </div>
+        <div class="socials">
+            <a href="#">Github</a>
+            <a href="#">LinkedIn</a>
+            <a href="#">Twitter</a>
+        </div>
+        </footer>
+       
+        </div> 
+        
+        <script>
+            (() => {
+                const button =
+                document.getElementById("themeToggle");
+
+                const savedTheme =
+                localStorage.getItem("nerdhub-theme");
+
+                const systemDark =
+                window.matchMedia(
+                    "(prefers-color-scheme: dark)"
+                ).matches;
+
+                function setTheme(dark, save = true) {
+                    document.body.classList.toggle(
+                        "dark",
+                        dark
+                    );
+
+                    button.textContent =
+                    dark ? "" : "";
+
+                    button.setAttribute(
+                        "aria-label",
+                        dark
+                        ? "Switch to light mode"
+                        : "Switch to dark mode"
+                    );
+
+                    if (save) {
+                        localStorage.setItem(
+                            "nerdhub-theme",
+                            dark? "dark" : "light"
+                        );
+                    }
+                }
+
+                setTheme(
+                    savedTheme
+                    ? savedTheme === "dark"
+                    : systemDark,
+                    false
+                );
+
+                button.addEventListener(
+                    "click",
+                    () => {
+
+                        const isDark =
+                        document.body.classList.contains("dark");
+
+                        setTheme(!isDark);
+                    }
+                );
+            })();
+        </script>
+    </body>
+</html>
